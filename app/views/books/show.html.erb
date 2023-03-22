@@ -1,0 +1,29 @@
+<dv class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= render 'users/info' %>
+      <h2 class="mt-3">New book</h2>
+      <%= render 'form', book: @book_new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag @book.get_image %><br>
+              </td>
+            <td></td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Show", edit_book_path(@book.id), class: "btn btn-success" %>
+                <%= link_to "Destroy", book_path(@book.id), method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</dv>
