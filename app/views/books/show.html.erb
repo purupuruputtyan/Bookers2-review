@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
@@ -14,7 +17,7 @@
             <td>
               <%= link_to user_path(@user.id) do %>
                 <%= image_tag @book.user.get_profile_image(100,100) %><br>
-                <%= @user.name %>
+                <%= @book.user.name %>
               <% end %>
             </td>
             <td>
@@ -24,10 +27,10 @@
             </td>
             <td><%= @book.body %></td>
             <td>
-              <% if @book.user == current_user %>
-                <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
-                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？",  class: "btn btn-danger" %>
-              <% end %>
+            <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？",  class: "btn btn-danger" %></td>
+            <% end %>
             </td>
           </tr>
         </tbody>
